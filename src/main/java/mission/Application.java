@@ -1,6 +1,5 @@
 package mission;
 
-import api.Console;
 import java.util.List;
 import mission.config.AppConfig;
 import mission.dto.ReservationInputDTO;
@@ -31,12 +30,12 @@ public class Application {
                         reservationService.saveReservation(input);
                         break;
                     case 2:
-                        List<ReservationOutputDTO> output = reservationService.getCurrentReservations();
+                        List<ReservationOutputDTO> output = reservationService.getAllReservations();
                         outputView.printReservationList(output);
                         break;
                     case 3:
-                        List<ReservationOutputDTO> all = reservationService.getCurrentReservations();
-                        outputView.printReservationTable(all);
+                        List<List<Boolean>> protoTable = reservationService.getTableRangeReservations();
+                        outputView.printReservationTable(protoTable);
                         break;
                     case 4:
                         quit = true;
