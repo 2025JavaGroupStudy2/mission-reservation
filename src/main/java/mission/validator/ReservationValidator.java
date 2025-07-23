@@ -9,7 +9,6 @@ import static mission.config.ExceptionMessage.RESERVATION_EXISTING;
 
 //- 예약 날짜 범위가 맞지 않음.
 //- 시작 날짜가 종료 날짜보다 늦음.
-//- 입력 양식이 틀린 응답이 입력됨.
 //- 해당 시간에 예약이 존재함.
 
 public class ReservationValidator {
@@ -21,7 +20,7 @@ public class ReservationValidator {
 
     public static void validateOverlap(List<Reservation> existing,  Reservation reservation){
         for(Reservation res : existing){
-            if(){
+            if(res.isOverlap(reservation)){
                 throw new IllegalArgumentException(RESERVATION_EXISTING);
             }
         }

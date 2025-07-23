@@ -32,5 +32,6 @@ public class Reservation {
     }
 
     public boolean isOverlap(Reservation a){
+        return this.timeStart.isBefore(a.getTimeEnd()) &&  this.timeEnd.isAfter(a.getTimeStart());
     }
 }
