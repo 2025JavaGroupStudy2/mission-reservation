@@ -9,7 +9,7 @@ import mission.config.ExceptionMessage;
 
 public class InputValidator {
     public static ReservationInputDTO isFormatCorrect(String line) {
-        List<String> parts = Arrays.asList(line.split("\\s*-\\s*"));
+        List<String> parts = Arrays.asList(line.split(" - "));
 
         if(parts.size()<3) { throw new IllegalArgumentException(ExceptionMessage.INVALID_FORMAT); }
 
