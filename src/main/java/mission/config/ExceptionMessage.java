@@ -8,4 +8,5 @@ public final class ExceptionMessage {
     public static final String INVALID_FORMAT = "올바른 형식으로 입력하세요.";
     public static final String INVALID_DATE_SEQUENCE = "시작 날짜가 종료 날짜보다 늦습니다.";
     public static final String INVALID_START_TIME = "예약 시간은 현재보다 미래여야합니다.";
+    public static final String RESERVATION_EXISTING = "중복된 예약입니다.";
 }

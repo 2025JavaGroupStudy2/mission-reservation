@@ -30,4 +30,7 @@ public class Reservation {
     public LocalDateTime getSavedAt() {
         return savedAt;
     }
+
+    public boolean isOverlap(Reservation a){
+    }
 }
