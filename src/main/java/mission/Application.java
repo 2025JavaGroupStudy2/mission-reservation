@@ -20,12 +20,24 @@ public class Application {
         InputView inputView = appConfig.inputView();
         OutputView outputView = appConfig.outputView();
         ReservationService reservationService = appConfig.reservationService();
+        boolean quit = false;
 
         try{
-            ReservationInputDTO input = inputView.inputReservationInfo();
-            reservationService.saveReservation(input);
-            List<ReservationOutputDTO> output = reservationService.getCurrentReservations();
-            outputView.printReservationList(output);
+            do {
+                int menu = inputView.inputMenuChoice();
+                switch (menu) {
+                    case 1:
+                        ReservationInputDTO input = inputView.inputReservationInfo();
+                        reservationService.saveReservation(input);
+                        break;
+                    case 2:
+                        List<ReservationOutputDTO> output = reservationService.getCurrentReservations();
+                        outputView.printReservationList(output);
+                        break;
+                    case 3:
+                        quit = true;
+                }
+            } while (!quit);
 
         } catch (Exception e){
             throw new RuntimeException(e.getClass().getName()+" : "+e.getMessage());

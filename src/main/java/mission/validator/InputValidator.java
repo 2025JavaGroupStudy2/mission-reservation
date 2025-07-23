@@ -8,14 +8,29 @@ import mission.dto.ReservationInputDTO;
 import mission.config.ExceptionMessage;
 
 public class InputValidator {
-    public static ReservationInputDTO isFormatCorrect(String line) {
+    public static int isMenuChoiceFormatCorrect(String line){
+        try{
+            return Integer.parseInt(line);
+        }catch (Exception e){
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_FORMAT);
+        }
+    }
+
+    public static ReservationInputDTO isReservationRequestFormatCorrect(String line) {
+        LocalDateTime startTime, endTime;
+        String reservator;
         List<String> parts = Arrays.asList(line.split(" - "));
 
         if(parts.size()<3) { throw new IllegalArgumentException(ExceptionMessage.INVALID_FORMAT); }
 
-        LocalDateTime startTime = LocalDateTime.parse(parts.get(0));
-        LocalDateTime endTime = LocalDateTime.parse(parts.get(1));
-        String reservator = parts.get(2);
+        try{
+            startTime = LocalDateTime.parse(parts.get(0));
+            endTime = LocalDateTime.parse(parts.get(1));
+            reservator = parts.get(2);
+
+        }catch (Exception e){
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_FORMAT);
+        }
 
         if(startTime.isBefore(GlobalVariable.TODAY)) { throw new IllegalArgumentException(ExceptionMessage.INVALID_START_TIME);}
         if(endTime.isBefore(startTime)) { throw new IllegalArgumentException(ExceptionMessage.INVALID_DATE_SEQUENCE); }
