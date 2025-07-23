@@ -35,7 +35,12 @@ public class Application {
                         outputView.printReservationList(output);
                         break;
                     case 3:
+                        List<ReservationOutputDTO> all = reservationService.getCurrentReservations();
+                        outputView.printReservationTable(all);
+                        break;
+                    case 4:
                         quit = true;
+                        break;
                 }
             } while (!quit);
 
